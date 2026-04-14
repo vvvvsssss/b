@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINEに移動しています...</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #faf8f5;
+      color: #1a2744;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    /* LINE アイコン */
+    .line-icon {
+      width: 96px;
+      height: 96px;
+      background-color: #06C755;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      box-shadow: 0 6px 24px rgba(6, 199, 85, 0.30);
+    }
+
+    .line-icon span {
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* 見出し */
+    .heading {
+      font-size: 24px;
+      font-weight: 500;
+      color: #1a2744;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* サブテキスト */
+    .subtext {
+      font-size: 14px;
+      color: #888888;
+      margin-bottom: 40px;
+      letter-spacing: 0.02em;
+    }
+
+    /* プログレスバー */
+    .progress-wrap {
+      background-color: #e8e3d9;
+      border-radius: 999px;
+      height: 6px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #b8933f;
+      border-radius: 999px;
+      animation: progress 2s ease-in-out forwards;
+    }
+
+    @keyframes progress {
+      0%   { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    /* 手動リンク */
+    .manual-link {
+      font-size: 13px;
+      color: #06C755;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(6, 199, 85, 0.35);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .manual-link:hover {
+      color: #05aa49;
+      border-color: rgba(5, 170, 73, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- 1. LINE アイコン -->
+    <div class="line-icon">
+      <span>LINE</span>
+    </div>
+
+    <!-- 2. 見出し -->
+    <h1 class="heading">LINEに移動しています...</h1>
+
+    <!-- 3. サブテキスト -->
+    <p class="subtext">このままお待ちください</p>
+
+    <!-- 4. プログレスバー -->
+    <div class="progress-wrap">
+      <div class="progress-bar"></div>
+    </div>
+
+    <!-- 5. 手動リンク -->
+    <a href="https://lin.ee/v6PHys3" class="manual-link">自動で移動しない場合はこちら</a>
+
+  </div>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = 'https://lin.ee/v6PHys3';
+    }, 2000);
+  </script>
+
+</body>
+</html>
