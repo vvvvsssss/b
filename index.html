@@ -6,7 +6,7 @@
   <title>特別なご案内</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=block" rel="stylesheet">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -21,6 +21,8 @@
       font-size: 16px;
       line-height: 1.7;
       min-height: 100vh;
+      visibility: hidden;
+      padding-bottom: 80px;
     }
 
     .inner {
@@ -378,6 +380,44 @@
       margin: 0 12px;
       color: rgba(255, 255, 255, 0.25);
     }
+
+    /* ── スクロールアニメーション ── */
+    .anim {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .anim.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── 固定CTAバー ── */
+    .fixed-cta-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      z-index: 1000;
+      padding: 12px 16px;
+      background: #ffffff;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.10);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .fixed-cta-bar.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .fixed-cta-bar .cta-btn {
+      padding: 14px 24px;
+    }
   </style>
 </head>
 <body>
@@ -388,19 +428,19 @@
 
       <!-- 1. ヘッダーバッジ -->
       <div class="header-area">
-        <div class="header-badge">
+        <div class="header-badge anim">
           <span class="badge">完全非公開</span>
         </div>
 
         <!-- 2. キャッチコピー -->
-        <div class="catchcopy">
+        <div class="catchcopy anim" style="transition-delay: 0.1s;">
           <p class="lead">このページを見つけた方へ</p>
           <p class="headline">今だけ限定の<br>特別なご案内<span class="headline-underline"></span></p>
           <p class="sub">不特定多数の方には公開できないため、詳細はあえて伏せさせていただいております。<br>このページに辿り着いたあなたには、特別な情報をお伝えしたいと思います。</p>
         </div>
 
         <!-- 3. CTA ボタン -->
-        <div class="cta-section">
+        <div class="cta-section anim" id="first-cta" style="transition-delay: 0.2s;">
           <a href="#" class="cta-btn">▶ LINEで詳細を確認する</a>
           <p class="cta-note">※無料で登録可能です。</p>
         </div>
@@ -422,21 +462,21 @@
 
       <!-- 5. こんな方におすすめ -->
       <div class="recommend-section">
-        <p class="section-title">こんな方におすすめです</p>
-        <div class="recommend-card">
+        <p class="section-title anim">こんな方におすすめです</p>
+        <div class="recommend-card anim" style="transition-delay: 0.1s;">
           <ul class="recommend-list">
-            <li><span class="check">✓</span><span>副業・在宅ワークに興味がある方</span></li>
-            <li><span class="check">✓</span><span>会社の収入だけでは不安を感じている方</span></li>
-            <li><span class="check">✓</span><span>スキマ時間を有効活用したい方</span></li>
-            <li><span class="check">✓</span><span>初心者でも始めやすい方法を探している方</span></li>
-            <li><span class="check">✓</span><span>信頼できる情報を求めている方</span></li>
+            <li class="anim" style="transition-delay: 0.1s;"><span class="check">✓</span><span>副業・在宅ワークに興味がある方</span></li>
+            <li class="anim" style="transition-delay: 0.2s;"><span class="check">✓</span><span>会社の収入だけでは不安を感じている方</span></li>
+            <li class="anim" style="transition-delay: 0.3s;"><span class="check">✓</span><span>スキマ時間を有効活用したい方</span></li>
+            <li class="anim" style="transition-delay: 0.4s;"><span class="check">✓</span><span>初心者でも始めやすい方法を探している方</span></li>
+            <li class="anim" style="transition-delay: 0.5s;"><span class="check">✓</span><span>信頼できる情報を求めている方</span></li>
           </ul>
         </div>
       </div>
 
       <!-- 6. SECRET セクション -->
       <div class="secret-section">
-        <div class="secret-card">
+        <div class="secret-card anim">
           <p class="secret-label">SECRET</p>
           <p>本当に価値のある情報は、表に出ることはありません。</p>
           <p>LINEにご登録いただいた方だけに、『特別なプレゼント』をご案内しています。</p>
@@ -446,17 +486,17 @@
 
       <!-- 7. ステップ説明 -->
       <div class="steps-section">
-        <p class="section-title">受け取り方法はカンタン3ステップ</p>
+        <p class="section-title anim">受け取り方法はカンタン3ステップ</p>
         <div class="steps-list">
-          <div class="step-card">
+          <div class="step-card anim" style="transition-delay: 0.1s;">
             <div class="step-num">STEP<span>1</span></div>
             <div class="step-text">LINEを登録する</div>
           </div>
-          <div class="step-card">
+          <div class="step-card anim" style="transition-delay: 0.2s;">
             <div class="step-num">STEP<span>2</span></div>
             <div class="step-text">メッセージを受け取る</div>
           </div>
-          <div class="step-card">
+          <div class="step-card anim" style="transition-delay: 0.3s;">
             <div class="step-num">STEP<span>3</span></div>
             <div class="step-text">内容を確認して実践する</div>
           </div>
@@ -465,7 +505,7 @@
 
       <!-- 9. 注意事項 -->
       <div class="caution-section">
-        <div class="caution-box">
+        <div class="caution-box anim">
           <ul>
             <li>・本情報は予告なく終了する場合があります</li>
             <li>・内容の転載・無断共有はお控えください</li>
@@ -492,7 +532,7 @@
       <div class="legal-section">
 
         <!-- 特定商取引法 -->
-        <div class="info-box">
+        <div class="info-box anim">
           <p class="box-title">特定商取引法に基づく表記・運営者情報</p>
           <div class="box-body">
             <p>事業者名：ネクスト・リード・デジタル・マーケティング</p>
@@ -505,7 +545,7 @@
         </div>
 
         <!-- 個人情報 -->
-        <div class="info-box">
+        <div class="info-box anim" style="transition-delay: 0.1s;">
           <p class="box-title">個人情報の取り扱いについて</p>
           <div class="box-body">
             <p>当サイトでは、お客様の個人情報を適切に保護し、関連法令を遵守したうえで取り扱います。</p>
@@ -537,6 +577,48 @@
       <a href="#">運営者情報</a>
     </div>
   </footer>
+
+  <!-- ── 固定CTAバー ── -->
+  <div class="fixed-cta-bar" id="fixed-cta-bar">
+    <a href="#" class="cta-btn">▶ LINEで詳細を確認する</a>
+  </div>
+
+  <script>
+    // 1. フォント読み込み完了後にbodyを表示
+    document.fonts.ready.then(function () {
+      document.body.style.visibility = 'visible';
+    });
+
+    // 2. スクロールアニメーション（Intersection Observer）
+    var animObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          animObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.anim').forEach(function (el) {
+      animObserver.observe(el);
+    });
+
+    // 3. 固定CTAバー：最初のCTAが画面外に出たら表示
+    var fixedBar = document.getElementById('fixed-cta-bar');
+    var firstCta = document.getElementById('first-cta');
+
+    var ctaObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          fixedBar.classList.remove('show');
+        } else {
+          fixedBar.classList.add('show');
+        }
+      });
+    }, { threshold: 0 });
+
+    ctaObserver.observe(firstCta);
+  </script>
 
 </body>
 </html>
