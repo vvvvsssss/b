@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LINEに移動しています...</title>
+  <title>特別なご案内</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -14,128 +17,526 @@
     body {
       background-color: #faf8f5;
       color: #1a2744;
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       font-size: 16px;
       line-height: 1.7;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    .container {
+    .inner {
       max-width: 480px;
-      width: 100%;
       margin: 0 auto;
-      padding: 48px 24px;
-      text-align: center;
+      padding: 0 20px;
     }
 
-    /* LINE アイコン */
-    .line-icon {
-      width: 96px;
-      height: 96px;
-      background-color: #06C755;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 32px;
-      box-shadow: 0 6px 24px rgba(6, 199, 85, 0.30);
+    /* ── 波形区切り ── */
+    .wave-wrap {
+      line-height: 0;
+      overflow: hidden;
     }
 
-    .line-icon span {
-      color: #ffffff;
-      font-size: 28px;
+    .wave-wrap svg {
+      display: block;
+      width: 100%;
+    }
+
+    /* ── 共通セクション ── */
+    .section-cream {
+      background-color: #faf8f5;
+    }
+
+    .section-white {
+      background-color: #ffffff;
+    }
+
+    .section-title {
+      font-size: 20px;
       font-weight: 700;
+      color: #1a2744;
+      text-align: center;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 3px;
+      background: #b8933f;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ── 1. ヘッダーバッジ ── */
+    .header-area {
+      padding: 44px 0 0;
+    }
+
+    .header-badge {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #1a2744;
+      color: #b8933f;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      padding: 7px 24px;
+      border-radius: 999px;
+    }
+
+    /* ── 2. キャッチコピー ── */
+    .catchcopy {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .catchcopy .lead {
+      font-size: 13px;
+      color: #999999;
+      margin-bottom: 10px;
       letter-spacing: 0.05em;
     }
 
-    /* 見出し */
-    .heading {
-      font-size: 24px;
+    .catchcopy .headline {
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1a2744 0%, #b8933f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 14px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+    }
+
+    .catchcopy .headline-underline {
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #b8933f;
+      border-radius: 2px;
+      margin: 10px auto 0;
+    }
+
+    .catchcopy .sub {
+      font-size: 13px;
+      color: #666666;
+      line-height: 1.9;
+    }
+
+    /* ── 5. こんな方におすすめ ── */
+    .recommend-section {
+      padding: 36px 0 36px;
+    }
+
+    .recommend-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 28px 24px;
+    }
+
+    .recommend-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .recommend-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: #1a2744;
+      line-height: 1.6;
+    }
+
+    .recommend-list li .check {
+      color: #b8933f;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
+
+    /* ── 6. SECRET セクション ── */
+    .secret-section {
+      padding: 36px 0 28px;
+    }
+
+    .secret-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(26, 39, 68, 0.09);
+      padding: 26px 24px;
+      border-left: 4px solid #b8933f;
+    }
+
+    .secret-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      color: #1a2744;
+      margin-bottom: 14px;
+      opacity: 0.7;
+    }
+
+    .secret-card p {
+      font-size: 14px;
+      color: #444444;
+      line-height: 1.9;
+    }
+
+    .secret-card p + p {
+      margin-top: 12px;
+    }
+
+    /* ── 7. ステップセクション ── */
+    .steps-section {
+      padding: 36px 0 36px;
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #b8933f;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.1;
+    }
+
+    .step-num span {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .step-text {
+      font-size: 15px;
       font-weight: 500;
       color: #1a2744;
-      margin-bottom: 12px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
 
-    /* サブテキスト */
-    .subtext {
-      font-size: 14px;
-      color: #888888;
-      margin-bottom: 40px;
-      letter-spacing: 0.02em;
+    /* ── 3. CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 0 0 40px;
     }
 
-    /* プログレスバー */
-    .progress-wrap {
-      background-color: #e8e3d9;
-      border-radius: 999px;
-      height: 6px;
-      overflow: hidden;
-      margin-bottom: 32px;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background-color: #b8933f;
-      border-radius: 999px;
-      animation: progress 2s ease-in-out forwards;
-    }
-
-    @keyframes progress {
-      0%   { width: 0%; }
-      100% { width: 100%; }
-    }
-
-    /* 手動リンク */
-    .manual-link {
-      font-size: 13px;
-      color: #06C755;
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background-color: #06C755;
+      color: #ffffff;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
       text-decoration: none;
-      border-bottom: 1px solid rgba(6, 199, 85, 0.35);
-      padding-bottom: 1px;
-      transition: color 0.2s, border-color 0.2s;
+      text-align: center;
+      padding: 18px 24px;
+      border-radius: 12px;
+      letter-spacing: 0.06em;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(6, 199, 85, 0.28);
     }
 
-    .manual-link:hover {
-      color: #05aa49;
-      border-color: rgba(5, 170, 73, 0.5);
+    .cta-btn:hover {
+      background-color: #05aa49;
+    }
+
+    .cta-note {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #888888;
+      line-height: 1.8;
+    }
+
+    /* ── 9. 注意事項 ── */
+    .caution-section {
+      padding: 0 0 36px;
+    }
+
+    .caution-box {
+      background: #f5efe6;
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .caution-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .caution-box ul li {
+      font-size: 11px;
+      color: #888888;
+      line-height: 1.7;
+      padding-left: 1em;
+      text-indent: -1em;
+    }
+
+    /* ── 10. 法的情報ボックス ── */
+    .legal-section {
+      padding: 36px 0 48px;
+    }
+
+    .info-box {
+      background-color: #f5f5f5;
+      border-radius: 12px;
+      padding: 22px 20px;
+      margin-bottom: 20px;
+    }
+
+    .info-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-box .box-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a2744;
+      margin-bottom: 16px;
+      padding-left: 12px;
+      border-left: 3px solid #b8933f;
+      line-height: 1.6;
+    }
+
+    .info-box .box-body {
+      font-size: 12px;
+      color: #444444;
+      line-height: 2.0;
+    }
+
+    .info-box .box-body p + p {
+      margin-top: 10px;
+    }
+
+    .info-box .box-body .section-heading {
+      font-weight: 700;
+      color: #1a2744;
+      margin-top: 16px;
+      margin-bottom: 4px;
+    }
+
+    /* ── フッター ── */
+    footer {
+      background-color: #1a2744;
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .footer-links {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #b8933f;
+    }
+
+    .footer-links .sep {
+      margin: 0 12px;
+      color: rgba(255, 255, 255, 0.25);
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <!-- ── トップ：クリーム背景 ── -->
+  <div class="section-cream">
+    <div class="inner">
 
-    <!-- 1. LINE アイコン -->
-    <div class="line-icon">
-      <span>LINE</span>
+      <!-- 1. ヘッダーバッジ -->
+      <div class="header-area">
+        <div class="header-badge">
+          <span class="badge">完全非公開</span>
+        </div>
+
+        <!-- 2. キャッチコピー -->
+        <div class="catchcopy">
+          <p class="lead">このページを見つけた方へ</p>
+          <p class="headline">今だけ限定の<br>特別なご案内<span class="headline-underline"></span></p>
+          <p class="sub">不特定多数の方には公開できないため、詳細はあえて伏せさせていただいております。<br>このページに辿り着いたあなたには、特別な情報をお伝えしたいと思います。</p>
+        </div>
+
+        <!-- 3. CTA ボタン -->
+        <div class="cta-section">
+          <a href="#" class="cta-btn">▶ LINEで詳細を確認する</a>
+          <p class="cta-note">※無料で登録可能です。</p>
+        </div>
+      </div>
+
     </div>
-
-    <!-- 2. 見出し -->
-    <h1 class="heading">LINEに移動しています...</h1>
-
-    <!-- 3. サブテキスト -->
-    <p class="subtext">このままお待ちください</p>
-
-    <!-- 4. プログレスバー -->
-    <div class="progress-wrap">
-      <div class="progress-bar"></div>
-    </div>
-
-    <!-- 5. 手動リンク -->
-    <a href="https://lin.ee/v6PHys3" class="manual-link">自動で移動しない場合はこちら</a>
-
   </div>
 
-  <script>
-    setTimeout(function() {
-      window.location.href = 'https://lin.ee/v6PHys3';
-    }, 2000);
-  </script>
+  <!-- 波形区切り：クリーム → ホワイト -->
+  <div class="wave-wrap" style="background-color:#faf8f5;">
+    <svg viewBox="0 0 480 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="48">
+      <path d="M0,0 C120,48 360,0 480,32 L480,48 L0,48 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+
+  <!-- ── ミドル：ホワイト背景 ── -->
+  <div class="section-white">
+    <div class="inner">
+
+      <!-- 5. こんな方におすすめ -->
+      <div class="recommend-section">
+        <p class="section-title">こんな方におすすめです</p>
+        <div class="recommend-card">
+          <ul class="recommend-list">
+            <li><span class="check">✓</span><span>副業・在宅ワークに興味がある方</span></li>
+            <li><span class="check">✓</span><span>会社の収入だけでは不安を感じている方</span></li>
+            <li><span class="check">✓</span><span>スキマ時間を有効活用したい方</span></li>
+            <li><span class="check">✓</span><span>初心者でも始めやすい方法を探している方</span></li>
+            <li><span class="check">✓</span><span>信頼できる情報を求めている方</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. SECRET セクション -->
+      <div class="secret-section">
+        <div class="secret-card">
+          <p class="secret-label">SECRET</p>
+          <p>本当に価値のある情報は、表に出ることはありません。</p>
+          <p>LINEにご登録いただいた方だけに、『特別なプレゼント』をご案内しています。</p>
+          <p>この情報をお届けできる人数には限りがあります。ご興味のある方はお早めにご登録ください。</p>
+        </div>
+      </div>
+
+      <!-- 7. ステップ説明 -->
+      <div class="steps-section">
+        <p class="section-title">受け取り方法はカンタン3ステップ</p>
+        <div class="steps-list">
+          <div class="step-card">
+            <div class="step-num">STEP<span>1</span></div>
+            <div class="step-text">LINEを登録する</div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">STEP<span>2</span></div>
+            <div class="step-text">メッセージを受け取る</div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">STEP<span>3</span></div>
+            <div class="step-text">内容を確認して実践する</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. 注意事項 -->
+      <div class="caution-section">
+        <div class="caution-box">
+          <ul>
+            <li>・本情報は予告なく終了する場合があります</li>
+            <li>・内容の転載・無断共有はお控えください</li>
+            <li>・効果には個人差があります</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 波形区切り：ホワイト → クリーム -->
+  <div class="wave-wrap" style="background-color:#ffffff;">
+    <svg viewBox="0 0 480 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="48">
+      <path d="M0,32 C120,0 360,48 480,16 L480,48 L0,48 Z" fill="#faf8f5"/>
+    </svg>
+  </div>
+
+  <!-- ── ボトム：クリーム背景 ── -->
+  <div class="section-cream">
+    <div class="inner">
+
+      <!-- 10. 法的情報 -->
+      <div class="legal-section">
+
+        <!-- 特定商取引法 -->
+        <div class="info-box">
+          <p class="box-title">特定商取引法に基づく表記・運営者情報</p>
+          <div class="box-body">
+            <p>事業者名：ネクスト・リード・デジタル・マーケティング</p>
+            <p>代表者：佐藤 健一</p>
+            <p>所在地：〒107-0062 東京都港区南青山2丁目2-15 ウィン青山 732号室</p>
+            <p>TEL：090-6883-6940</p>
+            <p>Email：asa0410asasa@gmail.com</p>
+            <p>※お問い合わせはメールにて受け付けております。</p>
+          </div>
+        </div>
+
+        <!-- 個人情報 -->
+        <div class="info-box">
+          <p class="box-title">個人情報の取り扱いについて</p>
+          <div class="box-body">
+            <p>当サイトでは、お客様の個人情報を適切に保護し、関連法令を遵守したうえで取り扱います。</p>
+
+            <p class="section-heading">【個人情報を収集・利用する目的】</p>
+            <p>・お問い合わせへの回答（本人確認を行うことを含む）<br>
+               ・当事業主が提供するサービスの案内・提供<br>
+               ・メンテナンス、重要なお知らせなど必要に応じたご連絡</p>
+
+            <p class="section-heading">【個人情報の第三者提供】</p>
+            <p>当事業主は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。<br>
+               ・法令に基づく場合<br>
+               ・人の生命、身体または財産の保護のために必要がある場合</p>
+
+            <p class="section-heading">【免責事項】</p>
+            <p>当ウェブサイトからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。また、当ウェブサイトのコンテンツ・情報について、できる限り正確な情報を提供するよう努めておりますが、正確性や安全性を保証するものではありません。情報が古くなっていることもございます。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── フッター ── -->
+  <footer>
+    <div class="footer-links">
+      <a href="#">プライバシーポリシー</a>
+      <span class="sep">|</span>
+      <a href="#">運営者情報</a>
+    </div>
+  </footer>
 
 </body>
 </html>
